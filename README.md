@@ -1,5 +1,5 @@
 <p align="center">
-<img src="{{ "ohana.png" | relative_url }}" style="max-width: 45%"></img></center>
+<img src=ohana.png>
 </p>
 
 ## Introduction
