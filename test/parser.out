@@ -1,0 +1,82 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> pair_group
+Rule 1     pair -> LETTER DIGIT SEMI
+Rule 2     pair_group -> pair_group pair
+Rule 3     pair_group -> pair
+
+Terminals, with rules where they appear
+
+DIGIT                : 1
+LETTER               : 1
+SEMI                 : 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+pair                 : 2 3
+pair_group           : 2 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . pair_group
+    (2) pair_group -> . pair_group pair
+    (3) pair_group -> . pair
+    (1) pair -> . LETTER DIGIT SEMI
+
+    LETTER          shift and go to state 3
+
+    pair_group                     shift and go to state 1
+    pair                           shift and go to state 2
+
+state 1
+
+    (0) S' -> pair_group .
+    (2) pair_group -> pair_group . pair
+    (1) pair -> . LETTER DIGIT SEMI
+
+    LETTER          shift and go to state 3
+
+    pair                           shift and go to state 4
+
+state 2
+
+    (3) pair_group -> pair .
+
+    LETTER          reduce using rule 3 (pair_group -> pair .)
+    $end            reduce using rule 3 (pair_group -> pair .)
+
+
+state 3
+
+    (1) pair -> LETTER . DIGIT SEMI
+
+    DIGIT           shift and go to state 5
+
+
+state 4
+
+    (2) pair_group -> pair_group pair .
+
+    LETTER          reduce using rule 2 (pair_group -> pair_group pair .)
+    $end            reduce using rule 2 (pair_group -> pair_group pair .)
+
+
+state 5
+
+    (1) pair -> LETTER DIGIT . SEMI
+
+    SEMI            shift and go to state 6
+
+
+state 6
+
+    (1) pair -> LETTER DIGIT SEMI .
+
+    LETTER          reduce using rule 1 (pair -> LETTER DIGIT SEMI .)
+    $end            reduce using rule 1 (pair -> LETTER DIGIT SEMI .)
+
