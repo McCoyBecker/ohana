@@ -1,5 +1,5 @@
 <p align="center">
-<img src=ohana.png>
+<img src=ohana.png style="max-width: 30%">
 </p>
 
 ## Introduction
